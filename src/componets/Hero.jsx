@@ -9,7 +9,7 @@ function Hero() {
   return (
     <div className='grid place-items-center h-screen p-4 '>
         <img src={airbnb}alt="" className='flex items-center justify-center h-screen ' />
-      <div className='p-8 m-3 flex flex-row flex-wrap md:flex-row lg:flex-row sm:flex-col   gap-4 '>
+      <div className='p-8 m-3 flex flex-row flex-wrap md:flex-row lg:flex-row sm:flex-col bg-pink-700  gap-4 '>
       <div><CiTextAlignCenter size={32} />
         <h1 className='font-bold'>Online experiences</h1>
         <p className='font-sans'>Join unique interactive led by one of kind Hosts-all-leaving home </p></div>

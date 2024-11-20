@@ -1,6 +1,7 @@
 import Header from "./componets/Header";
 import Hero from "./componets/Hero";
 import PracticeScriba from "./componets/PracticeScriba";
+import Kection from "./componets/Kection";
 
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
   return (
     <div>
      <Header/>
-     <Hero/>
+     {/* <Hero/> */}
+     <Kection/>
       {/* <PracticeScriba/> */}
     </div>
 
