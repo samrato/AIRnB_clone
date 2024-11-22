@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link to="/" className="font-bold text-lg">Jumbo Business</Link>
         <div className="flex space-x-4">
           <Link to="/sells" className="hover:underline">Sells</Link>
-          <Link to="/add-product" className="hover:underline">Add Product</Link>
+          <Link to="/add-product" className="hover:underline">Sell Product</Link>
           <Link to="/inbox" className="hover:underline">Inbox</Link>
           <Link to="/login" className="hover:underline">Login</Link>
         </div>
