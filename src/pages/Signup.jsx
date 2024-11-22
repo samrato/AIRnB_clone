@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase'; // Ensure you have the correct Firebase config
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -11,38 +11,61 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setError(''); // Clear previous errors
+
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate('/login'); // Redirect to login page after signup
+      navigate('/'); // Redirect to home page after successful signup
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="w-full max-w-sm bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-xl font-semibold mb-4">Create an Account</h2>
-        {error && <p className="text-red-500 mb-2">{error}</p>}
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded shadow-md w-96">
+        <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
         <form onSubmit={handleSignup}>
-          <input
-            type="email"
-            className="w-full p-2 mb-4 border border-gray-300 rounded"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            className="w-full p-2 mb-4 border border-gray-300 rounded"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm font-medium mb-1">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="password" className="block text-sm font-medium mb-1">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:ring focus:ring-blue-300"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition"
+          >
             Sign Up
           </button>
         </form>
+        <p className="text-sm text-gray-600 mt-4">
+          Already have an account?{' '}
+          <a href="/login" className="text-blue-500 hover:underline">
+            Log In
+          </a>
+        </p>
       </div>
     </div>
   );
